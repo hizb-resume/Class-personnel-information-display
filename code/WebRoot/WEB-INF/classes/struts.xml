@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<!-- 开发模式 -->
+	
+         
+	<package name="hizengbiao" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="myinterceptor"
+				class="Interceptor.UserPowerInterceptor"></interceptor>
+			<interceptor-stack name="mystack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="myinterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+	
+		<action name="register" class="myregister" method="userRegister">
+			<result name="suc">login.jsp</result>				
+		</action>
+		    
+		<action name="login" class="mylogin" method="userLogin">
+			<result name="suc" type="chain">show</result>
+			<result name="fail">login.jsp</result>		
+			<result name="login">/WEB-INF/offline.jsp</result>				
+		</action>
+		
+		<action name="show" class="myshowstu" method="showMessage">
+  		<result name="success">/WEB-INF/disp.jsp</result>
+  		<result name="login">/WEB-INF/offline.jsp</result>
+  		<interceptor-ref name="mystack" />
+  		</action>
+  		
+  		<action name="detal" class="mydetal" method="show">
+			<result name="success">/WEB-INF/detal.jsp</result>
+			<result name="disp_index">/WEB-INF/disp.jsp</result>
+			<result name="login">/WEB-INF/offline.jsp</result>
+			<interceptor-ref name="mystack" />
+		</action>
+	
+		
+	</package>
+
+</struts>    

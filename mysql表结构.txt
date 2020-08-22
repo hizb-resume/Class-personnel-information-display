@@ -1,0 +1,19 @@
+studentsÏîÄ¿±í£º
+
+create table my_user(
+	id integer primary key not null AUTO_INCREMENT,
+	username varchar(20) not null unique,
+	password varchar(20) 
+);
+
+create table my_students(
+	id integer primary key not null AUTO_INCREMENT,
+	banji	varchar(20) not null,	
+	name	varchar(30) not null,
+	sex		varchar(10),
+	age		integer,
+	xuehao	varchar(20) unique not null,
+	tel		varchar(15) unique,
+	picpath	varchar(100),
+	jianjie	varchar(5000)  
+);
